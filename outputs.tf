@@ -29,3 +29,23 @@ output "nat_gateway_id" {
 output "private_route_table_id" {
   value = module.vpc.private_route_table_id
 }
+
+output "alb_security_group_id" {
+  value = module.security_groups.alb_security_group_id
+}
+
+output "management_security_group_id" {
+  value = module.security_groups.management_security_group_id
+}
+
+output "application_security_group_id" {
+  value = module.security_groups.application_security_group_id
+}
+
+output "ec2_iam_role_name" {
+  value = module.iam.ec2_role_name
+}
+
+output "ec2_instance_profile_name" {
+  value = module.iam.ec2_instance_profile_name
+}

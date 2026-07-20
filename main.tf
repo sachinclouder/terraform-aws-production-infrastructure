@@ -23,3 +23,23 @@ module "vpc" {
 
   enable_nat_gateway = false
 }
+
+module "security_groups" {
+
+  source = "./modules/security-groups"
+
+  project_name = local.project_name
+
+  environment = local.environment
+
+  vpc_id = module.vpc.vpc_id
+
+  ssh_allowed_cidrs = []
+}
+
+module "iam" {
+  source = "./modules/iam"
+
+  project_name = local.project_name
+  environment  = local.environment
+}
