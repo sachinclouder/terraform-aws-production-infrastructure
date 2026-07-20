@@ -43,3 +43,18 @@ module "iam" {
   project_name = local.project_name
   environment  = local.environment
 }
+
+module "alb" {
+  source = "./modules/alb"
+
+  project_name = local.project_name
+  environment  = local.environment
+
+  vpc_id                = module.vpc.vpc_id
+  public_subnet_ids     = module.vpc.public_subnet_ids
+  alb_security_group_id = module.security_groups.alb_security_group_id
+
+  target_port                = 80
+  health_check_path          = "/"
+  enable_deletion_protection = false
+}
