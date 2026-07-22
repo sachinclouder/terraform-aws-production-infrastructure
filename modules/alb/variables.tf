@@ -40,3 +40,8 @@ variable "enable_deletion_protection" {
   type        = bool
   default     = false
 }
+
+variable "certificate_arn" {
+  description = "ARN of the ACM certificate used for HTTPS"
+  type        = string
+}
